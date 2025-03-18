@@ -8,7 +8,7 @@ The file linear_data_structures.py contains implementation and explainations on 
 4. Priority queue
 5. Linked lists
 
-Additional data structures
+Additional data structures:
 6. Max heap (binary_heap.py)
 
 
