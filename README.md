@@ -1,7 +1,7 @@
 # Data-structures
 Contains code and explanations for various data structures.
 
-The file linear_data_structures.py contains implementation and explainations on:
+The file linear_data_structures.py contains implementation and explainations on the linear data structures:
 1. Stack
 2. Queue
 3. Circular queue
