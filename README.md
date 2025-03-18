@@ -1,5 +1,5 @@
 # Data-structures
-Contains code and explanations for various data structures.
+Contains code and explanations for various data structures. The coding follows the explanation in programiz.com.
 
 The file linear_data_structures.py contains implementation and explainations on the linear data structures:
 1. Stack
