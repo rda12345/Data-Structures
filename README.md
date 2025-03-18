@@ -11,5 +11,5 @@ The file linear_data_structures.py contains implementation and explainations on:
 Additional data structures
 6. Max heap (binary_heap.py)
 
-The file tree_based_DS.py containes imnplementation and explainations on:
+
 
