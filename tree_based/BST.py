@@ -3,14 +3,14 @@
 """
 Binary search tree (BST)
 The data supports search, insert and delete, find min/max, next larger/smaller
-in O(log(h)) running time, where h is the hieght of the tree.
-The hieght of the tree is the maximum number of edges between the leaf and
+in O(log(h)) running time, where h is the height of the tree.
+The height of the tree is the maximum number of edges between the leaf and
                                    the root.
 """
 
 class BSTNode(object):
     """A node in a BST tree"""
-    def __init__(self,k):
+    def __init__(self, k: float) -> None:
         """ Creates a node.
             
             Args:
@@ -31,7 +31,7 @@ class BSTNode(object):
     
         
     
-    def find(self,k):
+    def find(self, k: float) -> 'BSTNode':
         """Finds and returns the node with key k from the subtree rooted at this node."""
         if self.key == k:
             return self
@@ -46,7 +46,7 @@ class BSTNode(object):
             else:
                 return self.right.find(k)
     
-    def find_min(self):
+    def find_min(self) -> 'BSTNode':
         """Finds and returns the minimum element of the BST rooted at the node"""
         # Base case:
         if self.left is None:
@@ -54,7 +54,7 @@ class BSTNode(object):
         else: 
             return self.left.find_min()
     
-    def find_max(self):
+    def find_max(self) -> 'BSTNode':
         """Finds and returns the minimum element of the BST rooted at the node"""
         # Base case:
         if self.right == None:
@@ -62,7 +62,7 @@ class BSTNode(object):
         else: 
             return self.right.find_max()
     
-    def insert(self,node):
+    def insert(self, node: 'BSTNode') -> 'BSTNode':
         """Inserts a node into the subtree rooted at this node.
             (it is assumed each key is distinct)
         
@@ -87,7 +87,7 @@ class BSTNode(object):
             return node
         return self
             
-    def next_larger(self):
+    def next_larger(self) -> 'BSTNode':
         """Finds the node with the next larger key"""
         # Base case: the right child of the node is None
         if self.right == None:
@@ -98,9 +98,9 @@ class BSTNode(object):
         else: 
             return self.right.find_min()
         
-    def next_smaller(self):
+    def next_smaller(self) -> 'BSTNode':
         """Finds the node with the next smaller key"""
-        # Base case: the right childe of the node is None
+        # Base case: the right child of the node is None
         if self.left == None:
             if self.parent == None or self == self.parent.left:
                 raise NameError('This is the smallest key')
@@ -111,34 +111,10 @@ class BSTNode(object):
     
         
                 
-    #def delete(self):
-      #"""
-      # Deletes this node from the BST. Applies a simiple method which 
-      # uses a key replacement for the case
-      # where the deleted nodes children aren't None. 
-      #"""
-     # if self.left is None or self.right is None:
-      #  if self is self.parent.left:
-      #    self.parent.left = self.left or self.right
-      #    if self.parent.left is not None:
-      #      self.parent.left.parent = self.parent
-      #  else:
-      #    self.parent.right = self.left or self.right
-      #    if self.parent.right is not None:
-      #      self.parent.right.parent = self.parent
-      #  return self
-      #else:
-      #  s = self.next_larger()
-      #  # NOTE: deleting before swapping the keys so the BST RI is never violated.
-      #  deleted_node = s.delete()
-      #  self.key, s.key = s.key, self.key
-      #  return deleted_node
     
     
-    def delete(self):
-        """
-            Deletes this node from the BST.
-        """
+    def delete(self) -> 'BSTNode':
+        """Deletes this node from the BST."""
         y = self.next_larger()
         #cases 1 and 2: one of the self's children is None or both
         if self.left is None or self.right is None:
@@ -180,7 +156,7 @@ class BSTNode(object):
         
     
         
-    def check_ri(self):
+    def check_ri(self) -> bool:
         """
         Checks the representation invariant (RI) of the AVL tree. 
         Namely, that the tree is a binary search tree:
@@ -204,7 +180,7 @@ class BST(object):
     """Creates a binary search tree"""
     
     def __init__(self,node_class = BSTNode):
-        """Creates and emptly BST"""        
+        """Creates an empty BST"""        
         self.node_class = node_class
         self.root = None
         
@@ -215,7 +191,7 @@ class BST(object):
             return self.root.find_min()
             
      
-    def insert(self, key):
+    def insert(self, key: int) -> BSTNode:
         node = self.node_class(key)
         if self.root is None:
            self.root = node
@@ -224,14 +200,14 @@ class BST(object):
             return self.root.insert(node)
             
             
-    def find(self,key):
+    def find(self, key: int) -> BSTNode:
         return self.root and self.root.find(key)
    
     
-    def check_ri(self):
+    def check_ri(self) -> bool:
         return self.root and self.root.check_ri()
        
-    def delete(self,key):
+    def delete(self,key: int) -> BSTNode:
         node = self.find(key)
         if node:
             if node == self.root:
@@ -246,13 +222,13 @@ class BST(object):
         else:
             return None
         
-    def successor(self,key):
+    def successor(self, key: int) -> BSTNode:
         node = self.find(key)
         return node and node.next_larger()        
   
 
 l = []         
-def inorder(node):
+def inorder(node) -> None:
     if node != None:     
        #print(node.key)
        inorder(node.left)
@@ -290,7 +266,7 @@ if __name__ == '__main__':
     tree.delete(0)
     l = []    
     inorder(tree.root)
-    print(f'tree transversal: {l}')
+    print(f'tree traversal: {l}')
     print(f'RI check: {tree.check_ri()}')    
         
     ### BSTNode check                    
@@ -306,7 +282,7 @@ if __name__ == '__main__':
     
     l = []    
     inorder(root)
-    print(f'tree transversal: {l}')
+    print(f'tree traversal: {l}')
     print(f'RI check: {root.check_ri()}')
     
     ## delete check
@@ -317,7 +293,7 @@ if __name__ == '__main__':
     root.left.delete()
     l = []
     inorder(root)
-    print(f'tree transversal: {l}')
+    print(f'tree traversal: {l}')
     print(f'RI check: {root.check_ri()}')
     
     root.insert(BSTNode(6))

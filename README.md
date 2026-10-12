@@ -1,6 +1,6 @@
 # Data-structures
 Contains code and explanations for various data structures. 
-The coding follows the explanation in programiz.com. and CLRS's book
+The coding follows the explanation in programiz.com and CLRS's book
 
 Linear
 1. Stack
@@ -12,5 +12,6 @@ Linear
 Tree based
 1. Max heap
 2. BST
+3. AVL tree
 
 

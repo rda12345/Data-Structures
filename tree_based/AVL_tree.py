@@ -4,7 +4,7 @@
 AVL tree
 
 A data structure which maintains a balanced binary search tree.
-Search, insert, delete, find min/max, find smallest/largest are O(log(N)).
+Search, insert, delete, find min/max, find next smallest/ next largest are O(log(N)).
 And building the AVL takes O(N*log(N)) running time.
 """
 from BST import BSTNode, BST
@@ -14,17 +14,17 @@ from BST import BSTNode, BST
                 
 class AVLNode(BSTNode):
     
-    def __init__(self,key):
-        """Create as a node which will be inserted into the AVL tree"""
+    def __init__(self, key: int) -> None:
+        """Creates a node which will be inserted into the AVL tree"""
         BSTNode.__init__(self,key)  
         self.height = 0
         
-    def update_subtree_info(self):
-        """Updates the nodes info"""
+    def update_subtree_info(self) -> None:
+        """Updates the node's info"""
         self.height = self.updated_height()
     
-    def updated_height(self):
-        """Updates the node's height"""
+    def updated_height(self) -> int:
+        """Computes the node's height"""
         return 1 + max((self.left and self.left.height) or -1,
                        (self.right and self.right.height) or -1)
         
@@ -42,30 +42,30 @@ class AVLNode(BSTNode):
 class AVL(BST):
     
     
-    def __init__(self, node_class = AVLNode):
+    def __init__(self, node_class = AVLNode) -> None:
         """Initiates an AVL tree"""
         BST.__init__(self,node_class)
         
         
         
-    def insert(self,key):
+    def insert(self, key: int) -> AVLNode:
         """Inserts a node to the AVL tree and rebalances the tree"""
         inserted_node = BST.insert(self, key)
         self.rebalance(inserted_node)
         return inserted_node
         
         
-    def delete(self,key):
+    def delete(self, key: int) -> AVLNode:
         """Deletes a node with node.key = key from the tree"""
         deleted_node = BST.delete(self, key)
         if deleted_node:
             self.rebalance(deleted_node.parent)
         return deleted_node
         
-    def rebalance(self,node):
+    def rebalance(self,node: AVLNode) -> None:
         """Rebalances the tree by right and left rotations. 
         """
-        #We begin the procedure from the leafs to the root.    
+        #We begin the procedure from the leaves to the root.    
         while node is not None:
             node.update_subtree_info()
 
@@ -92,7 +92,7 @@ class AVL(BST):
         
          
            
-    def left_rotate(self,y):
+    def left_rotate(self, y: AVLNode) -> None:
         """Performs a left rotation w.r.t node y"""
         x = y.right
         x.parent = y.parent
@@ -112,8 +112,8 @@ class AVL(BST):
         x.update_subtree_info()
         y.update_subtree_info()
         
-    def right_rotate(self,x):
-        """Performs a right rotation w.r.t node y"""
+    def right_rotate(self, x: AVLNode) -> None:
+        """Performs a right rotation w.r.t node x"""
         y = x.left
         y.parent = x.parent
         if y.parent == None:
@@ -133,8 +133,8 @@ class AVL(BST):
         y.update_subtree_info()
         
         
-def height(node):
-    """Returns the height of the the node"""
+def height(node: AVLNode) -> int:
+    """Returns the height of the node"""
     if node is None:
         return -1
     else: 
@@ -143,7 +143,7 @@ def height(node):
     
     
 l = []    
-def inorder(node):
+def inorder(node: AVLNode) -> None:
     if node != None:     
        inorder(node.left)
        l.append(node.key)
@@ -162,7 +162,7 @@ if __name__ == '__main__':
     ## insert check
     l = []    
     inorder(tree.root)
-    print(f'tree transversal: {l}')
+    print(f'tree traversal: {l}')
     for key in keys:
         node = tree.find(key)
         node.check_ri()
@@ -174,7 +174,7 @@ if __name__ == '__main__':
     tree.delete(0)
     l = []    
     inorder(tree.root)
-    print(f'tree transversal: {l}')
+    print(f'tree traversal: {l}')
     for key in [2,6,18]:
         node = tree.find(key)
         node.check_ri()

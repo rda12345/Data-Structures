@@ -8,8 +8,8 @@ Queue:
     to the queue modify front and rear so front = 0 and rear = # of items - 1.
     
     Operations:
-        1. enqueue - add an element to the begining of the queue
-        2. dequeue - remove an element at the end of the queue
+        1. enqueue - add an element to the rear of the queue
+        2. dequeue - remove an element at the front of the queue
         3. isEmpty - check if the stack is empty
         4. isFull - check if the stack is full
         5. peek - get the value of the front of the queue without removing it
@@ -28,7 +28,7 @@ Queue:
 class Queue(object):
     
     def __init__(self,size):
-        ''' size: the maxium number of items added to the queue.'''
+        ''' size: the maximum number of items added to the queue.'''
         self.size = size
         self.queue = [None]*size
         self.front = -1
@@ -75,18 +75,20 @@ class Queue(object):
     def peek(self):
             if self.front > -1:
                 return self.queue[self.front]
-        
-## Check Queue
-# obj = Queue(5)
-# obj.enqueue(1)
-# obj.enqueue(2)
-# obj.enqueue(3)
-# obj.enqueue(4)
-# obj.enqueue(5)
-# print(obj)
-# obj.dequeue()
-# print(obj)
-# print(obj.peek())  
-# print(obj.is_empty())
-# print(obj.is_full())
+
+"""
+# Check Queue
+obj = Queue(5)
+obj.enqueue(1)
+obj.enqueue(2)
+obj.enqueue(3)
+obj.enqueue(4)
+obj.enqueue(5)
+print(obj)
+obj.dequeue()
+print(obj)
+print(obj.peek())  
+print(obj.is_empty())
+print(obj.is_full())
+"""        
 

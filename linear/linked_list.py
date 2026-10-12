@@ -3,21 +3,21 @@
 """
 Linked list:
     A series of connected nodes, each node stores the data and an address of the next node.
-    The address of the first node is the 'head' and the the last node points to a NULL.
+    The address of the first node is the 'head' and the last node points to a NULL.
     You create a linked list by: introducing the nodes, allocating memory for the associated data,
     connect the nodes.
-    The power of a linked list comes from the ability to break the chian and rejoin it.
+    The power of a linked list comes from the ability to break the chain and rejoin it.
     
     Operations:
         1. search
         2. insertion
         3. deletion
-        4. transversal - access each element of the linked list
+        4. traversal - access each element of the linked list
     
     Good for:
         - Dynamic memory allocation
         - Implemented in stack and queue
-        - In undo functionality of softwares
+        - In undo functionality of software
         - Hash tables, Graphs
         
     Time complexity:
@@ -39,11 +39,11 @@ class Node(object):
 class LinkedList(object):
     
     def __init__(self):
-        '''Create a linked list of nodes.'''
+        """Create a linked list of nodes."""
         self.head = None
     
     def transversal(self):
-        '''Prints a linked list'''
+        """Prints a linked list"""
         temp = self.head
         string = ''
         print('Linked list elements:')
@@ -53,7 +53,7 @@ class LinkedList(object):
         print(string[:-3])
     
     def insert(self,node,node_before = None):
-        '''Inserts a node 'node' ofter the 'before_node'.'''
+        """Inserts a node 'node' after the 'node_before', if node_before is None, then the node is inserted at the head"""
         if  node_before == None:
             node.next = self.head
             self.head = node
@@ -62,7 +62,7 @@ class LinkedList(object):
             node_before.next = node
     
     def delete(self,node):
-        '''Delete node from the linked list'''
+        """Delete node from the linked list"""
         if self.head == node:
             self.head = node.next
         else:
@@ -73,7 +73,7 @@ class LinkedList(object):
             previous_node.next = node.next
         
     def search(self,node):
-        '''Returns True if node is in the linked list and False otherwise.'''
+        """Returns True if node is in the linked list and False otherwise."""
         current_node = self.head
         while current_node != node and current_node != None:
             current_node = current_node.next

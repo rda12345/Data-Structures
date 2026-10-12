@@ -19,16 +19,16 @@ Priority Queue:
         5. isFull
     
     Time complexity: The complexity is identical to the heap.
-                    An insertion costs at most O(lg(n)) (requires heapifing the list after insertion)
+                    An insertion costs at most O(lg(n)) (requires heapifying the list after insertion)
                     therefore the initial building of the heap takes O(n*log(n))
                     1. insertion O(lg(n))
                     2. delete O(lg(n))
-                    3. extract max O(lg(n)) (requires heapifing the list after insertion)
+                    3. extract max O(lg(n)) (requires heapifying after extraction)
                     4. peek O(1)
 
     Good for:
         - Dijkstra's algorithm
-        - Load balancing and interrupt hanling of an operating system
+        - Load balancing and interrupt handling of an operating system
         - Data compression in the Huffman code      
 """
 
@@ -64,7 +64,7 @@ class Deque(object):
             self.front = (self.size - 1 + self.front)%self.size
             self.queue[self.front] = item
             
-    # Insert an item to the front of the deque
+    # Insert an item to the rear of the deque
     def insert_rear(self,item):
         
         if self.is_full():

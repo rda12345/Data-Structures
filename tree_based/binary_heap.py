@@ -4,12 +4,12 @@
 Binary heap
 
 A heap DS is a complete binary tree that satisfies the heap property:
-    Max heap: any given node is always bigger than its childs node/s. 
+    Max heap: any given node is always bigger than its child node/s. 
     
     Operations:
         Heapify:
             
-            1. Create a complete binary tree from the input array (0 is the route,
+            1. Create a complete binary tree from the input array (0 is the root,
                 1,2 its children and so on).
             2. Start from the first index of non-leaf node whose index is given by n/2 - 1.
             3. Set the current element i as largest.
@@ -17,12 +17,12 @@ A heap DS is a complete binary tree that satisfies the heap property:
             5. If leftChild > currentElement set largest = leftChildIndex, if 
                 rightChild > largest set largest = rightChild.
             6. Swap largest and current Element
-            7. Repat 3-7 until the subtrees are also heapified.
+            7. Repeat 3-7 until the subtrees are also heapified.
             
-        Delete: Recieves and index of the deleted item, swaps it with the last
+        Delete: Receives an index of the deleted item, swaps it with the last
                 leaf and max-heapifies the list.
         
-        Insert: Inserts and item and returns a heapified list. Inserts the item
+        Insert: Inserts an item and returns a heapified list. Inserts the item
                 in the last leaf and heapifies the tree.
             
         Peek/Find min/max: 
@@ -33,13 +33,13 @@ A heap DS is a complete binary tree that satisfies the heap property:
             
     Good for: 
         1. Heap sort
-        2. Dijstra's algorithm
+        2. Dijkstra's algorithm
         3. Priority queue
 """
 
 class Heap(object):
     
-    def __init__(self,L):
+    def __init__(self, L: list) -> None:
         '''L is a python list'''
         self.L = L
         self.n = len(L)
@@ -47,9 +47,9 @@ class Heap(object):
     def __str__(self):
         return str(self.L)
         
-    def max_heapify(self,n,i):
+    def max_heapify(self, n: int, i: int) -> None:
         left = 2*i + 1     # left child index
-        right = 2*i + 2     # right  child indes
+        right = 2*i + 2     # right  child index
         largest = i
         
         if left < self.n and self.L[left] > self.L[largest]:
@@ -62,12 +62,12 @@ class Heap(object):
             self.L[largest], self.L[i] = self.L[i], self.L[largest]
             self.max_heapify(n,largest)
 
-    def max_heapify_list(self):
+    def max_heapify_list(self) -> None:
         '''Max heapifies the entire list'''        
         for i in range(self.n//2-1,-1,-1):
             self.max_heapify(self.n,i)
             
-    def delete_node(self,index):
+    def delete_node(self,index: int) -> None:
         '''Deletes the element L[index]. Algorithm swaps L[index] with the last
             leaf and heapifies the list. 
         '''
@@ -79,14 +79,14 @@ class Heap(object):
         else:
             print('Index out of range')
             
-    def peek(self):
+    def peek(self) -> int:
         '''Returns the root node (the maximum for a max heap and the minimum
             for a min-heap).
         '''
         return self.L[0] 
     
     
-    def extract_max(self):
+    def extract_max(self) -> int:
         '''Extracts the maximum item, which is located at the root of the tree,
             assuming the list is max-heapified.
         '''
@@ -94,28 +94,28 @@ class Heap(object):
         self.delete_node(0)
         return temp
     
-    def insert(self,item):
+    def insert(self,item: int) -> None:
         '''Inserts the item in the last leaf and heapifies the tree.'''
         self.L.append(item)
         self.n += 1
         self.max_heapify_list()
         
         
-        
-            
+"""
 # Max heapify the list L        
-# L = [7,7,12,2,8,9,10]
-# h = Heap(L)
-# h.max_heapify_list() 
-# print(h)
-# h.insert(6)
-# h.insert(20)
-# print(h)
-# print(h.peek())
-# h.extract_max()
-# print(h)
-# h.delete_node(2)
-# print(h)
+L = [7,7,12,2,8,9,10]
+h = Heap(L)
+h.max_heapify_list() 
+print(h)
+h.insert(6)
+h.insert(20)
+print(h)
+print(h.peek())
+h.extract_max()
+print(h)
+h.delete_node(2)
+print(h)
+"""
  
 
     

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Circular Queue:
-    The cirular queue saves the inefficiency in memory of the regular queue.
+    The circular queue saves the inefficiency in memory of the regular queue.
     Similar operations and time-complexity as the regular queue.
     
     Good for: 

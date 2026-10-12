@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 """
 Stack: 
-    Last in first out (LIFO) principle. There is a single pointer top, initialliy
+    Last in first out (LIFO) principle. There is a single pointer top, initially
     set to -1 when you push an item you increment the pointer by one and insert the
     item to the stack.
 
     Operations: 
             1. push - add an element to the top of the stack
             2. pop - remove an element from the top of the stack
-            3. isEmpyt - check if the stack is empty
+            3. isEmpty - check if the stack is empty
             4. isFull - check if the stack is full
             5. Peek - get the value at the top of the stack without removing it
 
@@ -19,7 +19,7 @@ Stack:
     Good for: 
         - Reverse a word
         - Used by compilers to evaluate arithmetic expressions, by converting 
-            the expressions to prefix of posfix form.
+            the expressions to prefix or postfix form.
         - In browsers to control back forward commands.
 """
 
